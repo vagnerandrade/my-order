@@ -4,6 +4,7 @@ import com.example.myorder.api.dtos.CreateRestaurantDto;
 import com.example.myorder.api.dtos.RestaurantResponseDto;
 import com.example.myorder.entities.Restaurant;
 import com.example.myorder.repositories.RestaurantRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +28,7 @@ public class RestaurantService {
     }
 
     public RestaurantResponseDto getById(Integer id) {
-        Optional<Restaurant> optional = restaurantRepository.findById(id);
-
-        if(optional.isPresent()) {
-
-            Restaurant restaurant = optional.get();
+        Restaurant restaurant = findById(id);
             return new RestaurantResponseDto()
                     .setId(restaurant.getId())
                     .setEmail(restaurant.getEmail())
@@ -41,4 +38,14 @@ public class RestaurantService {
 
         return null;
     }
+
+    public Restaurant findById(Integer id) {
+        Optional<Restaurant> optional = restaurantRepository.findById(id);
+
+        if(!optional.isPresent()){
+                throw new NotFoundException()
+                }
+
+        Restaurant restaurant = optional.get();
+
 }

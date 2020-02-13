@@ -1,4 +1,3 @@
-
 package com.example.myorder.api.controllers;
 
 import com.example.myorder.api.RestPath;
@@ -15,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController("UserController")
 @RequestMapping(RestPath.BASE_PATH + "/users")
@@ -40,8 +40,9 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/list")
-    public List<UserResponseDto> list(){
-        return userService.listaALL();
+    public List<UserResponseDto> list() {
+        return userService.listAll();
     }
+
 
 }

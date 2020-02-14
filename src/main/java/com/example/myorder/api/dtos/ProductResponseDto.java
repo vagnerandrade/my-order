@@ -4,7 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel("Objeto de resposta criação de produto")
-public class ProductResponserDto {
+public class ProductResponseDto {
     @ApiModelProperty(value = "${product.response.name}")
     private String name;
 
@@ -18,7 +18,7 @@ public class ProductResponserDto {
         return name;
     }
 
-    public ProductResponserDto setName(String name) {
+    public ProductResponseDto setName(String name) {
         this.name = name;
         return this;
     }
@@ -27,7 +27,7 @@ public class ProductResponserDto {
         return value;
     }
 
-    public ProductResponserDto setValue(Double value) {
+    public ProductResponseDto setValue(Double value) {
         this.value = value;
         return this;
     }
@@ -36,7 +36,7 @@ public class ProductResponserDto {
         return restaurant;
     }
 
-    public ProductResponserDto setRestaurant(RestaurantResponseDto restaurant) {
+    public ProductResponseDto setRestaurant(RestaurantResponseDto restaurant) {
         this.restaurant = restaurant;
         return this;
     }

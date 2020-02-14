@@ -20,4 +20,31 @@ public class CreateProductDto {
     @NotNull
     @ApiModelProperty(value = "${product.create.restaurantId}")
     private Integer restaurantId;
+
+    public String getName() {
+        return name;
+    }
+
+    public CreateProductDto setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public Double getValue() {
+        return value;
+    }
+
+    public CreateProductDto setValue(Double value) {
+        this.value = value;
+        return this;
+    }
+
+    public Integer getRestaurantId() {
+        return restaurantId;
+    }
+
+    public CreateProductDto setRestaurantId(Integer restaurantId) {
+        this.restaurantId = restaurantId;
+        return this;
+    }
 }

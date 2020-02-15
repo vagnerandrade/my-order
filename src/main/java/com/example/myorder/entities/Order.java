@@ -3,6 +3,7 @@ package com.example.myorder.entities;
 import com.example.myorder.enums.OrderStatusEnum;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "USER_ORDER")
@@ -24,6 +25,10 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
+
+    @OrderBy("id ASC")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    private List<OrderItem> items;
 
     public Integer getId() {
         return id;
@@ -67,6 +72,15 @@ public class Order {
 
     public Order setUser(User user) {
         this.user = user;
+        return this;
+    }
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public Order setItems(List<OrderItem> items) {
+        this.items = items;
         return this;
     }
 }

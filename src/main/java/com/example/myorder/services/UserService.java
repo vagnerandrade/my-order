@@ -29,14 +29,20 @@ public class UserService {
        return UserMapper.toResponseDto(user);
     }
 
-    public UserResponseDto findById(Integer id) {
+    public UserResponseDto findUserById(Integer id) {
+        User user = findById(id);
+
+        return UserMapper.toResponseDto(user);
+    }
+
+    public User findById(Integer id) {
         Optional<User> user = userRepository.findById(id);
 
         if (!user.isPresent()){
             throw new NotFoundException("Não existe usuário para o id: " + id);
         }
 
-        return UserMapper.toResponseDto(user.get());
+        return user.get();
     }
 
     public List<UserResponseDto> listAll() {
